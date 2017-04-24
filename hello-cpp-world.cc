@@ -1,14 +1,24 @@
+// constructing vectors
 #include <iostream>
+#include <vector>
 
-int main() 
+using namespace std;
+int main ()
 {
-    std::cout << "Hello World!" << std::endl;
-    char c='A';
-    std::cout<< "Mi Variable c=" << c << "despues ..."<<std::endl;
-    c++;
-    std::cout<< "Mi Variable c=" << (char)(c+5) << "despues ..."<<std::endl;
-    
-    for(int i= 0; i < 100 ; i++)
-        std::cout<< "i=" << i << " Suma= " << (char)(c+i) <<std::endl;
+  // constructors used in the same order as described above:
+  vector<int> first;                                // empty vector of ints
+  vector<int> second (4,100);                       // four ints with value 100
+  vector<int> third (second.begin(),second.end());  // iterating through second
+  vector<int> fourth (third);                       // a copy of third
 
+  // the iterator constructor can also be used to construct from arrays:
+  int myints[] = {16,2,77,29};
+  vector<int> fifth (myints, myints + sizeof(myints) / sizeof(int) );
+
+  std::cout << "The contents of fifth are:";
+  for (auto it: fifth)
+    cout << ' ' << it;
+  cout << '\n';
+
+  return 0;
 }
